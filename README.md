@@ -11,7 +11,7 @@ This set of benchmarks is based around popularly used datasets in Machine Learni
 | airlines        | Predict Flight Delays                                                                                | 377568               | 8         |
 | bank_marketing  | Direct marketing – Banking Products                                                                  | 31648                | 17        |
 | cnae-9          | Documents with free text business descriptions of Brazilian companies                                | 757                  | 857       |
-| Connect-4       | 8-ply positions in the game of connect-4 in which neither player has won yet – predict win/loss      | 47290                | 161       |
+| connect-4       | 8-ply positions in the game of connect-4 in which neither player has won yet – predict win/loss      | 47290                | 161       |
 | fashion_mnist   | Clothing classification problem                                                                      | 60000                | 785       |
 | nomao           | Active learning is used to efficiently detect data that refer to a same place based on Nomao browser | 24126                | 119       |
 | numerai         | Data is cleaned, regularized and encrypted global equity data                                        | 67425                | 22        |
@@ -29,7 +29,7 @@ This set of benchmarks is based around popularly used datasets in Machine Learni
 
 
 ## Software prerequisites:
-1. [Python 3][1]
+1. [Python 3.8][1]
 2. [MySQL Shell][2]
 
 ## Required Services:
@@ -38,13 +38,23 @@ This set of benchmarks is based around popularly used datasets in Machine Learni
 
 ## Getting started
 1. Provision MySQL Database Service instance and add a 2-node HeatWave cluster.
-2. Install the necessary Python packages
+2. Clone this repository and change directories
 ```
-pip install pandas==1.2.3 numpy==1.22.2 unlzw3==0.2.1 sklearn==1.0.2
+git clone https://github.com/oracle-samples/heatwave-ml.git
+cd heatwave-ml
+```
+3. Create a Python virtual environment and activate it as follows
+```
+python3.8 -m venv py_heatwaveml
+source py_heatwaveml/bin/activate
+```
+3. Install the necessary Python packages
+```
+pip install pandas==1.4.2 numpy==1.22.3 unlzw3==0.2.1 sklearn==1.0.2
 ```
 
 ## Download and Preprocess the datasets to the current directory
-Click on the link below to download the respective benchmark
+Click on the link below to download the respective benchmark. You can also use wget from the command line.
 
 airlines
 
@@ -58,7 +68,7 @@ cnae-9
 
 - https://www.openml.org/data/get_csv/1586233/phpmcGu2X
 
-connect_4
+connect-4
 
 - https://archive.ics.uci.edu/ml/machine-learning-databases/connect-4/connect-4.data.Z
 
@@ -129,6 +139,10 @@ python3 heatwave-ml/preprocess.py --benchmark <name>
 ```
 
 ## Running a benchmark
+Launch MySQL Shell as below
+```
+mysqlsh user@hostname --mysql --sql
+```
 On the mysql-shell prompt, run
 ```
 > source heatwave-ml/<benchmark_name>.sql
@@ -144,7 +158,7 @@ In order to run scalability numbers for HeatWave ML, for the benchmarks above, r
 ## How to Contribute
 Refer to [CONTRIBUTING.md](CONTRIBUTING.md)
 
- [1]: https://www.python.org/
+ [1]: https://www.python.org/downloads/release/python-3813/
  [2]: https://dev.mysql.com/doc/mysql-shell/8.0/en/
  [3]: https://docs.cloud.oracle.com/en-us/iaas/Content/home.htm
  [4]: https://docs.oracle.com/en-us/iaas/mysql-database/

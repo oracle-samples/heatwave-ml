@@ -1,16 +1,12 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
-\sql
-SET GLOBAL local_infile=1;
+DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
 
-DROP TABLE IF EXISTS nyc_taxi_train;
 CREATE TABLE nyc_taxi_train (VendorID INT, store_and_fwd_flag VARCHAR(255), RatecodeID INT, PULocationID INT, DOLocationID INT, passenger_count FLOAT, extra FLOAT,
-mta_tax FLOAT, tolls_amount FLOAT, improvement_surcharge FLOAT, trip_type INT, lpep_pickup_datetime_day FLOAT, lpep_pickup_datetime_hour FLOAT, lpep_pickup_datetime_minute FLOAT, tip_amount FLOAT );
-
-DROP TABLE IF EXISTS nyc_taxi_test;
+mta_tax FLOAT, tip_amount FLOAT, tolls_amount FLOAT, improvement_surcharge FLOAT, trip_type INT, lpep_pickup_datetime_day FLOAT, lpep_pickup_datetime_hour FLOAT, lpep_pickup_datetime_minute FLOAT);
 CREATE TABLE nyc_taxi_test LIKE nyc_taxi_train;
 
 \js

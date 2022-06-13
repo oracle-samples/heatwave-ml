@@ -1,15 +1,11 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
-\sql
-SET GLOBAL local_infile=1;
+DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
 
-DROP TABLE IF EXISTS airlines_train;
 CREATE TABLE airlines_train (Airline VARCHAR(255), Flight FLOAT, AirportFrom VARCHAR(255), AirportTo VARCHAR(255), DayOfWeek INT, Time FLOAT, Length FLOAT, Delay INT);
-
-DROP TABLE IF EXISTS airlines_test;
 CREATE TABLE airlines_test LIKE airlines_train;
 
 \js

@@ -1,15 +1,11 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
-\sql
-SET GLOBAL local_infile=1;
+DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
 
-DROP TABLE IF EXISTS diamonds_train;
-CREATE TABLE diamonds_train (carat FLOAT, cut VARCHAR(255), color VARCHAR(255), clarity VARCHAR(255), depth FLOAT, _table Float, x FLOAT, y FLOAT, z FLOAT, price FLOAT );
-
-DROP TABLE IF EXISTS diamonds_test;
+CREATE TABLE diamonds_train (carat FLOAT, cut VARCHAR(255), color VARCHAR(255), clarity VARCHAR(255), depth FLOAT, _table Float, price FLOAT , x FLOAT, y FLOAT, z FLOAT);
 CREATE TABLE diamonds_test LIKE diamonds_train;
 
 \js

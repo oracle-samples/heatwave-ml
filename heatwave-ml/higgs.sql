@@ -1,15 +1,11 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
-\sql
-SET GLOBAL local_infile=1;
+DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
 
-DROP TABLE IF EXISTS higgs_train;
 CREATE TABLE higgs_train ( target FLOAT, lepton_pT FLOAT, lepton_eta FLOAT, lepton_phi FLOAT, missing_energy_magnitude FLOAT, missing_energy_phi FLOAT, jet_1_pt FLOAT, jet_1_eta FLOAT, jet_1_phi FLOAT, `jet_1_b-tag` FLOAT, jet_2_pt FLOAT, jet_2_eta FLOAT, jet_2_phi FLOAT, `jet_2_b-tag` FLOAT, jet_3_pt FLOAT, jet_3_eta FLOAT, jet_3_phi FLOAT, `jet_3_b-tag` FLOAT, jet_4_pt FLOAT, jet_4_eta FLOAT, jet_4_phi FLOAT, `jet_4_b-tag` FLOAT, m_jj FLOAT, m_jjj FLOAT, m_lv FLOAT, m_jlv FLOAT, m_bb FLOAT, m_wbb FLOAT, m_wwbb FLOAT);
-
-DROP TABLE IF EXISTS higgs_test;
 CREATE TABLE higgs_test LIKE higgs_train;
 
 \js
