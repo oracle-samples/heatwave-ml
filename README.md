@@ -155,8 +155,21 @@ end.
 ## Running scalability experiments
 In order to run scalability numbers for HeatWave ML, for the benchmarks above, run the ML_TRAIN commands from the sql files above for each benchmark on 1, 2, 4, 8 and 16 nodes. Measure the end-to-end training time (ML_TRAIN time from MySQL client perspective) for each configuration (benchmark + number of nodes). Graphing the number of nodes against the runtime on each node should give the scalability for a benchmark.
 
-## How to Contribute
-Refer to [CONTRIBUTING.md](CONTRIBUTING.md)
+## Contributing
+
+This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
+
+## Security
+
+Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
+
+## License
+
+Copyright (c) 2022 Oracle and/or its affiliates.
+
+Released under the Universal Permissive License v1.0 as shown at
+<https://oss.oracle.com/licenses/upl/>.
+
 
  [1]: https://www.python.org/downloads/release/python-3813/
  [2]: https://dev.mysql.com/doc/mysql-shell/8.0/en/
