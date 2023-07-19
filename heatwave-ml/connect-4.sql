@@ -1,6 +1,8 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+\sql
+SET GLOBAL local_infile = 1;
 DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
@@ -14,12 +16,12 @@ util.importTable("connect-4_test.csv",{table: "connect-4_test", dialect: "csv-un
 
 \sql
 -- Train the model
-CALL sys.ML_TRAIN('heatwaveml_bench.`connect-4_train`', 'class', JSON_OBJECT('task', 'classification'), @model);
+CALL sys.ML_TRAIN('heatwaveml_bench.`connect-4_train`', 'class', JSON_OBJECT('task', 'classification'), @model_connect4);
 -- Load the model into HeatWave
-CALL sys.ML_MODEL_LOAD(@model, NULL);
+CALL sys.ML_MODEL_LOAD(@model_connect4, NULL);
 -- Score the model on the test data
-CALL sys.ML_SCORE('heatwaveml_bench.`connect-4_test`', 'class', @model, 'balanced_accuracy', @score);
+CALL sys.ML_SCORE('heatwaveml_bench.`connect-4_test`', 'class', @model_connect4, 'balanced_accuracy', @score_connect4, null);
 -- Print the score
-SELECT @score;
+SELECT @score_connect4;
 
 DROP DATABASE heatwaveml_bench;

@@ -7,6 +7,7 @@ import os
 import shutil
 import tarfile
 import zipfile
+import pyreadr
 from pathlib import Path
 
 import numpy as np
@@ -16,6 +17,7 @@ from sklearn.model_selection import train_test_split
 
 
 def airlines():
+    print("Pre-processing airlines benchmark: ", end="")
     df = pd.read_csv("phpvcoG8S.csv", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
 
@@ -36,9 +38,12 @@ def airlines():
         index=False,
         line_terminator="\n",
     )
+    os.remove("phpvcoG8S.csv")
+    print("complete. \n")
 
 
 def bank_marketing():
+    print("Pre-processing bank_marketing benchmark: ", end="")
     zipfile.ZipFile("bank.zip", "r").extractall()
 
     df = pd.read_csv("bank-full.csv", header=0, sep=";", encoding="utf-8")
@@ -65,9 +70,11 @@ def bank_marketing():
     os.remove("bank.csv")
     os.remove("bank-full.csv")
     os.remove("bank-names.txt")
+    print("complete. \n")
 
 
 def cnae_9():
+    print("Pre-processing cnae-9 benchmark: ", end="")
     df = pd.read_csv("phpmcGu2X.csv", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
     df = df.astype(int)
@@ -81,9 +88,13 @@ def cnae_9():
     df_test.to_csv(
         "cnae-9_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
     )
+    os.remove("phpmcGu2X.csv")
+    print("complete. \n")
+
 
 
 def connect_4():
+    print("Pre-processing connect_4 benchmark: ", end="")
     open("connect-4.data", "wb").write(unlzw3.unlzw(Path("connect-4.data.Z")))
 
     columns = [
@@ -155,9 +166,11 @@ def connect_4():
     )
 
     os.remove("connect-4.data")
+    print("complete. \n")
 
 
 def fashion_mnist():
+    print("Pre-processing fashion_mnist benchmark: ", end="")
     image_paths = ["train-images-idx3-ubyte.gz", "t10k-images-idx3-ubyte.gz"]
     label_paths = ["train-labels-idx1-ubyte.gz", "t10k-labels-idx1-ubyte.gz"]
     splits = ["train", "test"]
@@ -184,9 +197,11 @@ def fashion_mnist():
 
         os.remove(image_path)
         os.remove(label_path)
+    print("complete. \n")
 
 
 def nomao():
+    print("Pre-processing nomao benchmark: ", end="")
     zipfile.ZipFile("Nomao.zip", "r").extractall()
 
     columns = [f"V{i}" for i in range(0, 119)] + ["Class"]
@@ -211,9 +226,11 @@ def nomao():
     )
 
     shutil.rmtree("Nomao")
+    print("complete. \n")
 
 
 def numerai():
+    print("Pre-processing numerai benchmark: ", end="")
     df = pd.read_csv("phpg2t68G.csv", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
 
@@ -234,9 +251,12 @@ def numerai():
         index=False,
         line_terminator="\n",
     )
+    os.remove("phpg2t68G.csv")
+    print("complete. \n")
 
 
 def higgs():
+    print("Pre-processing higgs benchmark: ", end="")
     df = pd.read_csv(
         "HIGGS.csv.gz",
         compression="gzip",
@@ -283,8 +303,11 @@ def higgs():
         "higgs_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
     )
 
+    os.remove("HIGGS.csv.gz")
+    print("complete. \n")
 
 def census():
+    print("Pre-processing census benchmark: ", end="")
     df = pd.read_csv(
         "adult.data",
         na_values=" ?",
@@ -357,9 +380,13 @@ def census():
     df_test.to_csv(
         "census_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
     )
+    os.remove("adult.data")
+    os.remove("adult.test")
+    print("complete. \n")
 
 
 def titanic():
+    print("Pre-processing titanic benchmark: ", end="")
     df = pd.read_csv("phpMYEkMl.csv", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
     df = df.replace({"?": "NULL"})
@@ -377,11 +404,15 @@ def titanic():
     df_test.to_csv(
         "titanic_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
     )
+    os.remove("phpMYEkMl.csv")
+    print("complete. \n")
 
 
 def creditcard():
-    df = pd.read_csv("creditcard.csv", header=0, sep=",", encoding="utf-8")
-
+    print("Pre-processing creditcard benchmark: ", end="")
+    result = pyreadr.read_r('creditcard.Rdata')
+    df = result["creditcard"]
+    
     df["Time"] = df["Time"].astype(int)
     df["Class"] = df["Class"].astype(int)
 
@@ -402,11 +433,14 @@ def creditcard():
         index=False,
         line_terminator="\n",
     )
+    os.remove("creditcard.Rdata")
+    print("complete. \n")
 
 
 def kddcup09_appetency():
+    print("Pre-processing kddcup09_appetency benchmark: ", end="")
     df = pd.read_csv(
-        "KDDCup09_appetency.csv", header=0, sep=",", encoding="utf-8", na_values="?"
+        "KDDCup09_appetency.arff", header=0, sep=",", encoding="utf-8", na_values="?"
     )
     df = df.replace({np.nan: "NULL"})
 
@@ -427,9 +461,12 @@ def kddcup09_appetency():
         index=False,
         line_terminator="\n",
     )
+    os.remove("KDDCup09_appetency.arff")
+    print("complete. \n")
 
 
 def twitter():
+    print("Pre-processing twitter benchmark: ", end="")
     tar = tarfile.open("regression.tar.gz", "r:gz")
     tar.extractall()
     tar.close()
@@ -536,10 +573,11 @@ def twitter():
         "twitter_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
     )
     shutil.rmtree("regression")
-
+    print("complete. \n")
 
 def nyc_taxi():
-    df = pd.read_csv("dataset", header=0, sep=",", encoding="utf-8")
+    print("Pre-processing nyc_taxi benchmark: ", end="")
+    df = pd.read_csv("dataset.csv", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
     # for NYC_taxi dataset remove some predictive features
     df.drop(
@@ -567,10 +605,13 @@ def nyc_taxi():
         index=False,
         line_terminator="\n",
     )
+    os.remove("dataset.csv")
+    print("complete. \n")
 
 
 def news_popularity():
-    df = pd.read_csv("dataset", header=0, sep=",", encoding="utf-8")
+    print("Pre-processing news_popularity benchmark: ", end="")
+    df = pd.read_csv("dataset.csv", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
     df.drop(columns=["url"], inplace=True)
 
@@ -589,10 +630,13 @@ def news_popularity():
         index=False,
         line_terminator="\n",
     )
+    os.remove("dataset.csv")
+    print("complete. \n")
 
 
 def black_friday():
-    df = pd.read_csv("file639340bd9ca9.csv", header=0, sep=",", encoding="utf-8")
+    print("Pre-processing black_friday benchmark: ", end="")
+    df = pd.read_csv("file639340bd9ca9.arff", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
 
     df_train, df_test = train_test_split(df, test_size=0.30, random_state=1)
@@ -610,10 +654,13 @@ def black_friday():
         index=False,
         line_terminator="\n",
     )
+    os.remove("file639340bd9ca9.arff")
+    print("complete. \n")
 
 
 def mercedes():
-    df = pd.read_csv("dataset", header=0, sep=",", encoding="utf-8", index_col=0)
+    print("Pre-processing mercedes benchmark: ", end="")
+    df = pd.read_csv("dataset.csv", header=0, sep=",", encoding="utf-8", index_col=0)
     df = df.replace({np.nan: "NULL"})
     # Mercedes convert some features to int
     df.iloc[:, 9:-1] = df.iloc[:, 9:-1].astype(int)
@@ -633,10 +680,13 @@ def mercedes():
         index=False,
         line_terminator="\n",
     )
+    os.remove("dataset.csv")
+    print("complete. \n")
 
 
 def diamonds():
-    df = pd.read_csv("dataset", header=0, sep=",", encoding="utf-8")
+    print("Pre-processing diamonds benchmark: ", end="")
+    df = pd.read_csv("dataset.csv", header=0, sep=",", encoding="utf-8")
     df = df.replace({np.nan: "NULL"})
 
     df_train, df_test = train_test_split(df, test_size=0.30, random_state=1)
@@ -654,6 +704,8 @@ def diamonds():
         index=False,
         line_terminator="\n",
     )
+    os.remove("dataset.csv")
+    print("complete. \n")
 
 
 if __name__ == "__main__":

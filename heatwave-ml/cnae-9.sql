@@ -1,6 +1,8 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+\sql
+SET GLOBAL local_infile = 1;
 DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
@@ -14,12 +16,12 @@ util.importTable("cnae-9_test.csv",{table: "cnae-9_test", dialect: "csv-unix", s
 
 \sql
 -- Train the model
-CALL sys.ML_TRAIN('heatwaveml_bench.`cnae-9_train`', 'Class', JSON_OBJECT('task', 'classification'), @model);
+CALL sys.ML_TRAIN('heatwaveml_bench.`cnae-9_train`', 'Class', JSON_OBJECT('task', 'classification'), @model_cnae);
 -- Load the model into HeatWave
-CALL sys.ML_MODEL_LOAD(@model, NULL);
+CALL sys.ML_MODEL_LOAD(@model_cnae, NULL);
 -- Score the model on the test data
-CALL sys.ML_SCORE('heatwaveml_bench.`cnae-9_test`', 'Class', @model, 'balanced_accuracy', @score);
+CALL sys.ML_SCORE('heatwaveml_bench.`cnae-9_test`', 'Class', @model_cnae, 'balanced_accuracy', @score_cnae, null);
 -- Print the score
-SELECT @score;
+SELECT @score_cnae;
 
 DROP DATABASE heatwaveml_bench;

@@ -50,7 +50,7 @@ source py_heatwaveml/bin/activate
 ```
 3. Install the necessary Python packages
 ```
-pip install pandas==1.4.2 numpy==1.22.3 unlzw3==0.2.1 sklearn==1.0.2
+pip install pandas==1.4.2 numpy==1.22.3 unlzw3==0.2.1 scikit-learn==1.0.2 pyreadr --user
 ```
 
 ## Download and Preprocess the datasets to the current directory
@@ -58,7 +58,7 @@ Click on the link below to download the respective benchmark. You can also use w
 
 airlines
 
-- https://www.openml.org/data/get_csv/66526/phpvcoG8S
+- https://www.openml.org/data/get_csv/66526/phpvcoG8S.csv
 
 bank_marketing
 
@@ -66,7 +66,7 @@ bank_marketing
 
 cnae-9
 
-- https://www.openml.org/data/get_csv/1586233/phpmcGu2X
+- https://www.openml.org/data/get_csv/1586233/phpmcGu2X.csv
 
 connect-4
 
@@ -85,7 +85,7 @@ nomao
 
 numerai
 
-- https://www.openml.org/data/get_csv/2160285/phpg2t68G
+- https://www.openml.org/data/get_csv/2160285/phpg2t68G.csv
 
 higgs
 
@@ -98,9 +98,9 @@ census
 
 titanic
 
-- https://www.openml.org/data/get_csv/16826755/phpMYEkMl
+- https://www.openml.org/data/get_csv/16826755/phpMYEkMl.csv
 
-creditcard (Please download the below dataset, convert it to csv and save it as creditcard.csv)
+creditcard
 
 - http://www.ulb.ac.be/di/map/adalpozz/data/creditcard.Rdata
 
@@ -114,11 +114,11 @@ twitter
 
 nyc_taxi
 
-- https://www.openml.org/data/get_csv/22044763/dataset
+- https://www.openml.org/data/get_csv/22044763/dataset.csv
 
 news_popularity
 
-- https://www.openml.org/data/get_csv/22044756/dataset
+- https://www.openml.org/data/get_csv/22044756/dataset.csv
 
 black_friday
 
@@ -126,11 +126,11 @@ black_friday
 
 mercedes
 
-- https://www.openml.org/data/get_csv/21854646/dataset
+- https://www.openml.org/data/get_csv/21854646/dataset.csv
 
 diamonds
 
-- https://www.openml.org/data/get_csv/21792853/dataset
+- https://www.openml.org/data/get_csv/21792853/dataset.csv
 
 
 After you have downloaded a benchmark, run the preprocess.py script with the benchmark name as below
