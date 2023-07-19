@@ -1,6 +1,8 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+\sql
+SET GLOBAL local_infile = 1;
 DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
@@ -14,12 +16,12 @@ util.importTable("news_popularity_test.csv",{table: "news_popularity_test", dial
 
 \sql
 -- Train the model
-CALL sys.ML_TRAIN('heatwaveml_bench.news_popularity_train', 'shares', JSON_OBJECT('task', 'regression'), @model);
+CALL sys.ML_TRAIN('heatwaveml_bench.news_popularity_train', 'shares', JSON_OBJECT('task', 'regression'), @model_news_popularity);
 -- Load the model into HeatWave
-CALL sys.ML_MODEL_LOAD(@model, NULL);
+CALL sys.ML_MODEL_LOAD(@model_news_popularity, NULL);
 -- Score the model on the test data
-CALL sys.ML_SCORE('heatwaveml_bench.news_popularity_test', 'shares', @model, 'r2', @score);
+CALL sys.ML_SCORE('heatwaveml_bench.news_popularity_test', 'shares', @model_news_popularity, 'r2', @score_news_popularity, null);
 -- Print the score
-SELECT @score;
+SELECT @score_news_popularity;
 
 DROP DATABASE heatwaveml_bench;

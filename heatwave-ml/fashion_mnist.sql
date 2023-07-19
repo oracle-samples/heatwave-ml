@@ -1,6 +1,8 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+\sql
+SET GLOBAL local_infile = 1;
 DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
@@ -14,10 +16,10 @@ util.importTable("fashion_mnist_test.csv",{table: "fashion_mnist_test", dialect:
 
 \sql
 -- Train the model
-CALL sys.ML_TRAIN('heatwaveml_bench.fashion_mnist_train', 'label', JSON_OBJECT('task', 'classification'), @model);
+CALL sys.ML_TRAIN('heatwaveml_bench.fashion_mnist_train', 'label', JSON_OBJECT('task', 'classification'), @model_fashion_mnist);
 -- Load the model into HeatWave
-CALL sys.ML_MODEL_LOAD(@model, NULL);
+CALL sys.ML_MODEL_LOAD(@model_fashion_mnist, NULL);
 -- Score the model on the test data
-CALL sys.ML_SCORE('heatwaveml_bench.fashion_mnist_test', 'label', @model, 'balanced_accuracy', @score);
+CALL sys.ML_SCORE('heatwaveml_bench.fashion_mnist_test', 'label', @model_fashion_mnist, 'balanced_accuracy', @score_fashion_mnist, null);
 -- Print the score
-SELECT @score;
+SELECT @score_fashion_mnist;

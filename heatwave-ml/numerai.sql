@@ -1,6 +1,8 @@
 -- Copyright (c) 2022, Oracle and/or its affiliates.
 -- Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 
+\sql
+SET GLOBAL local_infile = 1;
 DROP DATABASE IF EXISTS heatwaveml_bench;
 CREATE DATABASE heatwaveml_bench;
 USE heatwaveml_bench;
@@ -14,12 +16,12 @@ util.importTable("numerai28.6_test.csv",{table: "numerai_test", dialect: "csv-un
 
 \sql
 -- Train the model
-CALL sys.ML_TRAIN('heatwaveml_bench.numerai_train', 'attribute_21', JSON_OBJECT('task', 'classification'), @model);
+CALL sys.ML_TRAIN('heatwaveml_bench.numerai_train', 'attribute_21', JSON_OBJECT('task', 'classification'), @model_numerai);
 -- Load the model into HeatWave
-CALL sys.ML_MODEL_LOAD(@model, NULL);
+CALL sys.ML_MODEL_LOAD(@model_numerai, NULL);
 -- Score the model on the test data
-CALL sys.ML_SCORE('heatwaveml_bench.numerai_test', 'attribute_21', @model, 'balanced_accuracy', @score);
+CALL sys.ML_SCORE('heatwaveml_bench.numerai_test', 'attribute_21', @model_numerai, 'balanced_accuracy', @score_numerai, null);
 -- Print the score
-SELECT @score;
+SELECT @score_numerai;
 
 DROP DATABASE heatwaveml_bench;
