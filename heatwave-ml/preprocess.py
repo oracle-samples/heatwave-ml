@@ -29,14 +29,14 @@ def airlines():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "airlines_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("phpvcoG8S.csv")
     print("complete. \n")
@@ -57,14 +57,14 @@ def bank_marketing():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "bank_marketing_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
 
     os.remove("bank.csv")
@@ -83,10 +83,10 @@ def cnae_9():
         df, test_size=0.30, random_state=1, stratify=df["Class"]
     )
     df_train.to_csv(
-        "cnae-9_train.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "cnae-9_train.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     df_test.to_csv(
-        "cnae-9_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "cnae-9_test.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     os.remove("phpmcGu2X.csv")
     print("complete. \n")
@@ -155,14 +155,14 @@ def connect_4():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "connect-4_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
 
     os.remove("connect-4.data")
@@ -192,7 +192,7 @@ def fashion_mnist():
             sep=",",
             encoding="utf-8",
             index=False,
-            line_terminator="\n",
+            lineterminator="\n",
         )
 
         os.remove(image_path)
@@ -219,10 +219,10 @@ def nomao():
     df_train = df_train.replace({np.nan: "NULL"})
     df_test = df_test.replace({np.nan: "NULL"})
     df_train.to_csv(
-        "nomao_train.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "nomao_train.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     df_test.to_csv(
-        "nomao_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "nomao_test.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
 
     shutil.rmtree("Nomao")
@@ -242,14 +242,14 @@ def numerai():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "numerai28.6_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("phpg2t68G.csv")
     print("complete. \n")
@@ -297,10 +297,10 @@ def higgs():
     df_train = df.iloc[:-test_set_size]
     df_test = df.iloc[-test_set_size:]
     df_train.to_csv(
-        "higgs_train.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "higgs_train.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     df_test.to_csv(
-        "higgs_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "higgs_test.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
 
     os.remove("HIGGS.csv.gz")
@@ -375,10 +375,10 @@ def census():
     df = df.replace({np.nan: "NULL"})
     df_test = df_test.replace({np.nan: "NULL"})
     df.to_csv(
-        "census_train.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "census_train.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     df_test.to_csv(
-        "census_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "census_test.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     os.remove("adult.data")
     os.remove("adult.test")
@@ -399,10 +399,10 @@ def titanic():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
-        "titanic_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "titanic_test.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     os.remove("phpMYEkMl.csv")
     print("complete. \n")
@@ -424,14 +424,14 @@ def creditcard():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "creditcard_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("creditcard.Rdata")
     print("complete. \n")
@@ -452,14 +452,14 @@ def kddcup09_appetency():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "kddcup09_appetency_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("KDDCup09_appetency.arff")
     print("complete. \n")
@@ -567,10 +567,10 @@ def twitter():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
-        "twitter_test.csv", sep=",", encoding="utf-8", index=False, line_terminator="\n"
+        "twitter_test.csv", sep=",", encoding="utf-8", index=False, lineterminator="\n"
     )
     shutil.rmtree("regression")
     print("complete. \n")
@@ -596,14 +596,14 @@ def nyc_taxi():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "nyc_taxi_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("dataset.csv")
     print("complete. \n")
@@ -621,14 +621,14 @@ def news_popularity():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "news_popularity_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("dataset.csv")
     print("complete. \n")
@@ -645,14 +645,14 @@ def black_friday():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "black_friday_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("file639340bd9ca9.arff")
     print("complete. \n")
@@ -671,14 +671,14 @@ def mercedes():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "mercedes_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("dataset.csv")
     print("complete. \n")
@@ -695,14 +695,14 @@ def diamonds():
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     df_test.to_csv(
         "diamonds_test.csv",
         sep=",",
         encoding="utf-8",
         index=False,
-        line_terminator="\n",
+        lineterminator="\n",
     )
     os.remove("dataset.csv")
     print("complete. \n")
