@@ -1,47 +1,18 @@
-# HeatWave ML Code for Performance Benchmarks
+# HeatWave AutoML examples and performance benchmarks
 
-HeatWave is an integrated, massively parallel, high-performance, in-memory query accelerator for MySQL Database Service that accelerates performance of MySQL by orders of magnitude for analytics and mixed workloads. It is the only service that enables you to run OLTP and OLAP workloads simultaneously and directly from your MySQL database, without any changes to your applications. This eliminates the need for complex, time-consuming, and expensive data movement and integration with a separate analytics database. Your applications connect to the HeatWave cluster through standard MySQL protocols.
+[HeatWave](https://www.oracle.com/heatwave/) is an integrated, massively parallel, high-performance, in-memory query accelerator for MySQL Database Service that accelerates performance of MySQL by orders of magnitude for analytics and mixed workloads. It is the only service that enables you to run OLTP and OLAP workloads simultaneously and directly from your MySQL database, without any changes to your applications. This eliminates the need for complex, time-consuming, and expensive data movement and integration with a separate analytics database. Your applications connect to the HeatWave cluster through standard MySQL protocols.
 
-MySQL HeatWave users currently do not have an easy way of creating machine-learning models for their data in the database, or generating predictions and explanations for it. Such users, while being database experts, frequently are relatively new to Machine Learning and can benefit from products that streamline the creation and usage of machine learning models. HeatWave ML is the product that addresses this need.
-
-This set of benchmarks is based around popularly used datasets in Machine Learning fetched from multiple sources.
-
-| Benchmark       | Explanation                                                                                          | #Rows (Training Set) | #Features |
-| --------------- | ---------------------------------------------------------------------------------------------------- | -------------------- | --------- |
-| airlines        | Predict Flight Delays                                                                                | 377568               | 8         |
-| bank_marketing  | Direct marketing – Banking Products                                                                  | 31648                | 17        |
-| cnae-9          | Documents with free text business descriptions of Brazilian companies                                | 757                  | 857       |
-| connect-4       | 8-ply positions in the game of connect-4 in which neither player has won yet – predict win/loss      | 47290                | 161       |
-| fashion_mnist   | Clothing classification problem                                                                      | 60000                | 785       |
-| nomao           | Active learning is used to efficiently detect data that refer to a same place based on Nomao browser | 24126                | 119       |
-| numerai         | Data is cleaned, regularized and encrypted global equity data                                        | 67425                | 22        |
-| higgs           | Monte Carlo Simulations                                                                              | 10500000             | 29        |
-| census          | Determine if a person makes > 50k                                                                    | 32561                | 15        |
-| titanic         | Survival Status of individuals                                                                       | 917                  | 14        |
-| creditcard      | Identify fraudulent  transactions                                                                    | 199364               | 30        |
-| appetency       | Predict the propensity of customers to buy new products                                              | 35000                | 230       |
-| black_friday    | Customer purchases on Black Friday                                                                   | 116774               | 10        |
-| diamonds        | Predict price of a diamond                                                                           | 37758                | 10        |
-| mercedes        | Time the car took to pass testing                                                                    | 2946                 | 377       |
-| news_popularity | Predict the number of shares of article in social networks (popularity)                              | 27750                | 60        |
-| nyc_taxi        | Predict tip amount for NYC taxi cab                                                                  | 407284               | 15        |
-| twitter         | The popularity of a topic on social media                                                            | 408275               | 78        |
-
-
-## Software prerequisites:
-1. [Python 3.8][1]
-2. [MySQL Shell][2]
+HeatWave users currently do not have an easy way of creating machine-learning models for their data in the database, or generating predictions and explanations for it. Such users, while being database experts, frequently are relatively new to Machine Learning and can benefit from products that streamline the creation and usage of machine learning models. HeatWave AutoML is the product that addresses this need.
 
 ## Required Services:
 1. [Oracle Cloud Infrastructure][3]
 2. [MySQL Database Service][4] and [HeatWave][5]
 
 ## Getting started
-1. Provision MySQL Database Service instance and add a 2-node HeatWave cluster.
+1. Provision MySQL Database Service instance and add a HeatWave cluster.
 2. Clone this repository and change directories
 ```
 git clone https://github.com/oracle-samples/heatwave-ml.git
-cd heatwave-ml
 ```
 3. Create a Python virtual environment and activate it as follows
 ```
@@ -50,110 +21,146 @@ source py_heatwaveml/bin/activate
 ```
 3. Install the necessary Python packages
 ```
-pip install pandas==1.4.2 numpy==1.22.3 unlzw3==0.2.1 scikit-learn==1.0.2 pyreadr --user
+pip install pandas numpy unlzw3 scikit-learn pyreadr --user
 ```
 
-## Download and Preprocess the datasets to the current directory
-Click on the link below to download the respective benchmark. You can also use wget from the command line.
+## Python Notebooks
+To help customers get started with Heatwave ML and showcase its capabilities, we have prepared a set of Jupyter notebooks. Each notebook focuses on a simple application of Heatwave ML components in practice and walks you through a solution. Here is the list of existing notebooks and a screenshot of the rendered HTML.
 
-airlines
+<table>
+    <tr>
+        <th> Description</td>
+        <th> Link</td>
+    </tr>
+    <tr>
+        <td>Training a model to predict whether a bank customer will subscribe to a term deposit</td>
+        <td><a href="./examples/python/automl/table_classification_bank_marketing.ipynb">Bank marketing</a></td>
+   </tr>
+   <tr>
+        <td>Training a model to predict the price of a diamond</td>
+        <td><a href="./examples/python/automl/table_regression_diamonds.ipynb">Diamonds</a></td>
+   </tr>
+</table>
 
-- https://www.openml.org/data/get_csv/66526/phpvcoG8S.csv
+## SQL examples
+SQL Code to run training, predictions and scoring on a variety of common Machine Learning classification and regression datasets.
 
-bank_marketing
-
-- https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank.zip
-
-cnae-9
-
-- https://www.openml.org/data/get_csv/1586233/phpmcGu2X.csv
-
-connect-4
-
-- https://archive.ics.uci.edu/ml/machine-learning-databases/connect-4/connect-4.data.Z
-
-fashion_mnist
-
-- https://github.com/zalandoresearch/fashion-mnist/blob/master/data/fashion/t10k-images-idx3-ubyte.gz
-- https://github.com/zalandoresearch/fashion-mnist/blob/master/data/fashion/t10k-labels-idx1-ubyte.gz
-- https://github.com/zalandoresearch/fashion-mnist/blob/master/data/fashion/train-images-idx3-ubyte.gz
-- https://github.com/zalandoresearch/fashion-mnist/blob/master/data/fashion/train-labels-idx1-ubyte.gz
-
-nomao
-
-- https://archive.ics.uci.edu/ml/machine-learning-databases/00227/Nomao.zip
-
-numerai
-
-- https://www.openml.org/data/get_csv/2160285/phpg2t68G.csv
-
-higgs
-
-- https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz
-
-census
-
-- https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data
-- https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test
-
-titanic
-
-- https://www.openml.org/data/get_csv/16826755/phpMYEkMl.csv
-
-creditcard
-
-- http://www.ulb.ac.be/di/map/adalpozz/data/creditcard.Rdata
-
-appetency
-
-- https://www.openml.org/data/get_csv/53994/KDDCup09_appetency.arff
-
-twitter
-
-- https://archive.ics.uci.edu/ml/machine-learning-databases/00248/regression.tar.gz
-
-nyc_taxi
-
-- https://www.openml.org/data/get_csv/22044763/dataset.csv
-
-news_popularity
-
-- https://www.openml.org/data/get_csv/22044756/dataset.csv
-
-black_friday
-
-- https://www.openml.org/data/get_csv/21230845/file639340bd9ca9.arff
-
-mercedes
-
-- https://www.openml.org/data/get_csv/21854646/dataset.csv
-
-diamonds
-
-- https://www.openml.org/data/get_csv/21792853/dataset.csv
-
-
-After you have downloaded a benchmark, run the preprocess.py script with the benchmark name as below
-```
-python3 heatwave-ml/preprocess.py --benchmark <name>
-```
-
-## Running a benchmark
-Launch MySQL Shell as below
-```
-mysqlsh user@hostname --mysql --sql
-```
-On the mysql-shell prompt, run
-```
-> source heatwave-ml/<benchmark_name>.sql
-```
-where <benchmark_name> is a name from the above table. The train and test csvs generated above should
-be present in the current directory in MySQL Shell. Each SQL file will create the schemas for a benchmark,
-train a HeatWave ML model on it, and score the model on the test data. The test score will be output at the e
-end.
-
-## Running scalability experiments
-In order to run scalability numbers for HeatWave ML, for the benchmarks above, run the ML_TRAIN commands from the sql files above for each benchmark on 1, 2, 4, 8 and 16 nodes. Measure the end-to-end training time (ML_TRAIN time from MySQL client perspective) for each configuration (benchmark + number of nodes). Graphing the number of nodes against the runtime on each node should give the scalability for a benchmark.
+<table>
+    <tr>
+        <th> Example</td>
+        <th> Description</td>
+        <th> #Rows (Training Set)</td>
+        <th> #Features</td>
+    </tr>
+    <tr>
+        <td><a href="./sql/table_classification_airlines.sql">airlines</a></td>
+        <td>Predict Flight Delays</td>
+        <td>377568</td>
+        <td>8</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_bank_marketing.sql">bank_marketing</a></td>
+        <td>Direct marketing – Banking Products</td>
+        <td>31648</td>
+        <td>17</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_cnae-9.sql">cnae-9</a></td>
+        <td>Documents with free text business descriptions of Brazilian companies</td>
+        <td>757</td>
+        <td>857</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_connect-4.sql">connect-4</a></td>
+        <td>8-ply positions in the game of connect-4 in which neither player has won yet – predict win/loss</td>
+        <td>47290</td>
+        <td>161</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_fashion_mnist.sql">fashion_mnist</a></td>
+        <td>Clothing classification problem</td>
+        <td>60000</td>
+        <td>785</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_nomao.sql">nomao</a></td>
+        <td>Active learning is used to efficiently detect data that refer to a same place based on Nomao browser</td>
+        <td>24126</td>
+        <td>119</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_numerai.sql">numerai</a></td>
+        <td>Data is cleaned, regularized and encrypted global equity data</td>
+        <td>67425</td>
+        <td>22</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_higgs.sql">higgs</a></td>
+        <td>Monte Carlo Simulations</td>
+        <td>10500000</td>
+        <td>29</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_census.sql">census</a></td>
+        <td>Determine if a person makes > $50k</td>
+        <td>32561</td>
+        <td>15</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_titanic.sql">titanic</a></td>
+        <td>Survival Status of individuals</td>
+        <td>917</td>
+        <td>14</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_creditcard.sql">creditcard</a></td>
+        <td>Identify fraudulent  transactions</td>
+        <td>199364</td>
+        <td>30</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_classification_appetency.sql">appetency</a></td>
+        <td>Predict the propensity of customers to buy new products</td>
+        <td>35000</td>
+        <td>230</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_regression_black_friday.sql">black_friday</a></td>
+        <td>Customer purchases on Black Friday</td>
+        <td>116774</td>
+        <td>10</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_regression_diamonds.sql">diamonds</a></td>
+        <td>Predict price of a diamond</td>
+        <td>37758</td>
+        <td>10</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_regression_mercedes.sql">mercedes</a></td>
+        <td>Time the car took to pass testing</td>
+        <td>2946</td>
+        <td>377</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_regression_news_popularity.sql">news_popularity</a></td>
+        <td>Predict the number of shares of article in social networks (popularity)</td>
+        <td>27750</td>
+        <td>60</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_regression_nyc_taxi.sql">nyc_taxi</a></td>
+        <td>Predict tip amount for NYC taxi cab</td>
+        <td>407284</td>
+        <td>15</td>
+   </tr>
+   <tr>
+        <td><a href="./sql/table_regression_twitter.sql">twitter</a></td>
+        <td>The popularity of a topic on social media</td>
+        <td>408275</td>
+        <td>78</td>
+   </tr>
+</table>
 
 ## Contributing
 
@@ -165,7 +172,7 @@ Please consult the [security guide](./SECURITY.md) for our responsible security 
 
 ## License
 
-Copyright (c) 2023 Oracle and/or its affiliates.
+Copyright (c) 2025 Oracle and/or its affiliates.
 
 Released under the Universal Permissive License v1.0 as shown at
 <https://oss.oracle.com/licenses/upl/>.
