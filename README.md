@@ -34,11 +34,11 @@ To help customers get started with Heatwave ML and showcase its capabilities, we
     </tr>
     <tr>
         <td>Training a model to predict whether a bank customer will subscribe to a term deposit</td>
-        <td><a href="./examples/python/automl/table_classification_bank_marketing.ipynb">Bank marketing</a></td>
+        <td><a href="./python/automl/table_classification_bank_marketing.ipynb">Bank marketing</a></td>
    </tr>
    <tr>
         <td>Training a model to predict the price of a diamond</td>
-        <td><a href="./examples/python/automl/table_regression_diamonds.ipynb">Diamonds</a></td>
+        <td><a href="./python/automl/table_regression_diamonds.ipynb">Diamonds</a></td>
    </tr>
 </table>
 
