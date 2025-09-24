@@ -27,18 +27,57 @@ pip install pandas numpy unlzw3 scikit-learn pyreadr --user
 ## Python Notebooks
 To help customers get started with Heatwave ML and showcase its capabilities, we have prepared a set of Jupyter notebooks. Each notebook focuses on a simple application of Heatwave ML components in practice and walks you through a solution. Here is the list of existing notebooks and a screenshot of the rendered HTML.
 
+<style>
+table.wrap80 { table-layout: fixed; }
+table.wrap80 th, table.wrap80 td { white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+table.wrap80 col.desc { width: 80ch; }
+</style>
 <table>
+<table class="wrap80">
+<colgroup>
+<col class="desc">
+<col>
+</colgroup>
     <tr>
         <th> Description</td>
         <th> Link</td>
     </tr>
     <tr>
-        <td>Training a model to predict whether a bank customer will subscribe to a term deposit</td>
-        <td><a href="./python/automl/table_classification_bank_marketing.ipynb">Bank marketing</a></td>
+        <td>Demonstrates the application of ML_GENERATE for content generation using data from the 2024 Olympic Games</td>
+        <td><a href="./python/heatwave/generation.ipynb">HeatWave</a> <a href="./python/mysqlai/generation.ipynb">MySQL AI</a></td>
    </tr>
    <tr>
-        <td>Training a model to predict the price of a diamond</td>
-        <td><a href="./python/automl/table_regression_diamonds.ipynb">Diamonds</a></td>
+        <td>Demonstrates the application of ML_GENERATE for summarization using data from the 2024 Olympic Games</td>
+        <td><a href="./python/heatwave/summarization.ipynb">HeatWave</a> <a href="./python/mysqlai/summarization.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
+        <td>Showcase the use of ML_RAG for Retrieval Augmented Generation (RAG) and HEATWAVE_CHAT for engaging in natural language interactions using data from the 2024 Olympic Games</td>
+        <td><a href="./python/heatwave/rag_chat.ipynb">HeatWave</a> <a href="./python/mysqlai/rag_chat.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
+        <td>Training a model to predict whether a bank customer will subscribe to a term deposit</td>
+        <td><a href="./python/heatwave/classification_bank_marketing.ipynb">HeatWave</a> <a href="./python/mysqlai/classification_bank_marketing.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
+        <td>Predict the price of a diamond based on its characteristics and prior prices of other diamonds</td>
+        <td><a href="./python/heatwave/regression_diamonds.ipynb">HeatWave</a> <a href="./python/mysqlai/regression_diamonds.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
+        <td>Train an unsupervised anomaly detection model. In this context, "unsupervised" signifies that we'll be training our models without explicitly using the "Class" label (fraudulent or legitimate) during the training phase. Instead, we'll rely on the inherent patterns and structures within the transaction data to identify deviations from the norm.
+</td>
+        <td><a href="./python/heatwave/fraud_detection_creditcard.ipynb">HeatWave</a> <a href="./python/mysqlai/fraud_detection_creditcard.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
+        <td>Building a personalized movie recommendation system using the MovieLens 100K dataset</td>
+        <td><a href="./python/heatwave/recommendations_movie_lens.ipynb">HeatWave</a> <a href="./python/mysqlai/recommendations_movie_lens.ipynb">MySQL AI</a></td>
+   </tr>
+    <tr>
+        <td>Building and evaluating a forecasting model using the synthetic Electricity Consumption dataset</td>
+        <td><a href="./python/heatwave/forecasting_synthetic_electricity_consumption_dataset.ipynb">HeatWave</a> <a href="./python/mysqlai/forecasting_synthetic_electricity_consumption_dataset.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
+        <td>Building a LangChain chatbot using HeatWave GenAI showing how HeatWave GenAI can be easily used with any LangChain application</td>
+        <td><a href="./python/heatwave/langchain_chatbot.ipynb">HeatWave</a></td>
    </tr>
 </table>
 
