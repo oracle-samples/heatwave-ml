@@ -79,6 +79,18 @@ table.wrap80 col.desc { width: 80ch; }
         <td>Building a LangChain chatbot using HeatWave GenAI showing how HeatWave GenAI can be easily used with any LangChain application</td>
         <td><a href="./python/heatwave/langchain_chatbot.ipynb">HeatWave</a></td>
    </tr>
+   <tr>
+        <td>Retrieval-Augmented Generation (RAG) workflow powered by HeatWave GenAI and LangChain</td>
+        <td><a href="./python/heatwave/langchain_rag_heatwave_genai.ipynb">HeatWave</a></td>
+   </tr>
+   <tr>
+        <td>Digitize your legacy Purchase orders by extracting the contents from the document using HeatWave GenAI</td>
+        <td><a href="./python/heatwave/vision_po_heatwave_genai.ipynb">HeatWave</a></td>
+   </tr>
+   <tr>
+        <td>Weather agent that can query live data by using weather and calculator tools powered by HeatWave GenAI and LangChain</td>
+        <td><a href="./python/heatwave/langchain_weather_agent_heatwave_genai.ipynb">HeatWave</a></td>
+   </tr>
 </table>
 
 ## SQL examples
