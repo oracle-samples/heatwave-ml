@@ -51,6 +51,10 @@ table.wrap80 col.desc { width: 80ch; }
         <td><a href="./python/heatwave/summarization.ipynb">HeatWave</a> <a href="./python/mysqlai/summarization.ipynb">MySQL AI</a></td>
    </tr>
    <tr>
+        <td>Demonstrates the application of ML_GENERATE for summarization using data from the 2024 Olympic Games which is saved in a MySQL table</td>
+        <td><a href="./python/mysqlai/summarization_database_table.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
         <td>Showcase the use of ML_RAG for Retrieval Augmented Generation (RAG) and HEATWAVE_CHAT for engaging in natural language interactions using data from the 2024 Olympic Games</td>
         <td><a href="./python/heatwave/rag_chat.ipynb">HeatWave</a> <a href="./python/mysqlai/rag_chat.ipynb">MySQL AI</a></td>
    </tr>
@@ -90,6 +94,14 @@ table.wrap80 col.desc { width: 80ch; }
    <tr>
         <td>Weather agent that can query live data by using weather and calculator tools powered by HeatWave GenAI and LangChain</td>
         <td><a href="./python/heatwave/langchain_weather_agent_heatwave_genai.ipynb">HeatWave</a></td>
+   </tr>
+   <tr>
+        <td>Demonstrates the application of ML_EMBED_ROW and ML_EMBED_TABLE for embedding generation using data from the 2024 Olympic Games</td>
+        <td><a href="./python/mysqlai/embedding.ipynb">MySQL AI</a></td>
+   </tr>
+   <tr>
+        <td>Demonstrates how to use the MySQL DISTANCE function to compute similarity between image embeddings</td>
+        <td><a href="./python/mysqlai/bring_your_own_embeddings.ipynb">MySQL AI</a></td>
    </tr>
 </table>
 
