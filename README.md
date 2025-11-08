@@ -103,6 +103,10 @@ table.wrap80 col.desc { width: 80ch; }
         <td>Demonstrates how to use the MySQL DISTANCE function to compute similarity between image embeddings</td>
         <td><a href="./python/mysqlai/bring_your_own_embeddings.ipynb">MySQL AI</a></td>
    </tr>
+   <tr>
+        <td>Travel agent that can search hotels, show room options, and make reservations using LangChain Agent, MySQL AI Database, Oracle MCP Server, and OCI LLMs.</td>
+        <td><a href="./python/mysqlai/travel_agent.ipynb">MySQL AI</a></td>
+   </tr>
 </table>
 
 ## SQL examples
